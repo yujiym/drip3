@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "node": "pnpm exec hardhat node",
+    "deploy:local": "pnpm exec hardhat --network localhost run scripts/deploy.ts",
+    "deploy:sepolia": "pnpm exec hardhat --network sepolia run scripts/deploy.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
     "@openzeppelin/contracts": "^4.9.3",
     "chai": "^4.3.8",
+    "dotenv": "^16.3.1",
     "hardhat": "^2.17.3"
   }
 }
