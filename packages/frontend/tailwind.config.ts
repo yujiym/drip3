@@ -14,14 +14,18 @@ const config: Config = {
         'sans': ['IBM Plex Mono', ...defaultTheme.fontFamily.sans],
         'dot': ['Silkscreen', ...defaultTheme.fontFamily.mono]
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
     },
   },
-  darkMode: "class",
-  plugins: [nextui()]
+  plugins: [nextui({
+    prefix: "drp",
+    themes: {
+      light: {
+        colors: {
+          background: "#F7F7F7",
+          foreground: "#111111",
+        },
+      },
+    },
+  })]
 }
 export default config
