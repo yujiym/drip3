@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:frontend": "pnpm --filter \"frontend\" run dev",
-    "build:frontend": "pnpm --filter \"frontend\" run build",
-    "start:frontend": "pnpm --filter \"frontend\" run start",
-    "lint:frontend": "pnpm --filter \"frontend\" run lint"
+    "frontend": "pnpm -F \"frontend\"",
+    "contract": "pnpm -F \"contract\""
   },
   "keywords": [],
   "author": "",

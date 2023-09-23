@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --c-bg1: #f7f7f7;
   --c-bg2: #e6dfd7;
 }
 
@@ -13,5 +12,5 @@ body {
 }
 
 body {
-  @apply bg-white text-black;
+  @apply bg-background text-foreground;
 }
