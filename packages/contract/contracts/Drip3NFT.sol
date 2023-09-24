@@ -11,7 +11,6 @@ contract Drip3NFT is ERC721URIStorage {
     Counters.Counter private _tokenIds;
     Counters.Counter private _itemsSold;
 
-    mapping(bytes32 => uint256) public idToCid;
     uint256 listingPrice = 0 ether;
 
     address payable owner;
@@ -51,7 +50,7 @@ contract Drip3NFT is ERC721URIStorage {
     }
 
     function createToken(
-        bytes32 cid,
+        string memory tokenURI,
         uint256 price
     ) public payable returns (uint) {
         _tokenIds.increment();
@@ -59,16 +58,10 @@ contract Drip3NFT is ERC721URIStorage {
         uint256 newTokenId = _tokenIds.current();
 
         _mint(msg.sender, newTokenId);
-        // set fileId
-        _setBytesForId(cid, newTokenId);
-
+        _setTokenURI(newTokenId, tokenURI);
         createMarketItem(newTokenId, price);
 
         return newTokenId;
-    }
-
-    function _setBytesForId(bytes32 fileId, uint256 tokenId) internal {
-        idToCid[fileId] = tokenId;
     }
 
     function createMarketItem(uint256 tokenId, uint256 price) private {
