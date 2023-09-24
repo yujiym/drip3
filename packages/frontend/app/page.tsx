@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!isDisconnected && address) {
-      redirect("/app");
+      redirect("/app/products");
     }
   }, [address, isDisconnected]);
 

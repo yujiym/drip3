@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import { Menu, LogOut, PackagePlus } from "lucide-react";
+import { Menu, LogOut, PackagePlus, Package } from "lucide-react";
 import LogoImg from "@/assets/logo.png";
 import { useDisconnect } from "wagmi";
 import { Toaster } from "react-hot-toast";
@@ -39,6 +39,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <span className="inline-flex items-center">
               <PackagePlus className="mr-4" />
               New product
+            </span>
+          </DropdownItem>
+          <DropdownItem
+            key="products"
+            onClick={() => redirect("/app/products")}
+          >
+            <span className="inline-flex items-center">
+              <Package className="mr-4" />
+              My Product
             </span>
           </DropdownItem>
           <DropdownItem
