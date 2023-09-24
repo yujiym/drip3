@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <main className="container mx-auto max-w-2xl min-h-screen">
-        <h1 className="text-6xl md:text-7xl font-bold pt-24 px-6">
+        <h1 className="text-6xl md:text-7xl font-bold pt-24 px-6 leading-normal">
           Sell <span className="font-dot">anything</span>,
           <br />
           Build <span className="font-dot">community</span>

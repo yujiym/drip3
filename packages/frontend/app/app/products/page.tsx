@@ -54,9 +54,12 @@ export default function Product() {
       <div className="w-fullfont-bold text-3xl font-dot p-6 border-b border-foreground text-right">
         0.01 ETH
       </div>
-      <div className="border-b border-foreground p-6">
-        Mint this NFT you can get my portfolio files (10PSD) & future update
-        messages by owner.
+      <div className="border-b border-foreground p-6 font-bold">
+        My Portfolio
+      </div>
+      <div className="border-b border-foreground p-6 py-8">
+        If you mint this NFT you can get my portfolio files (10PSD) & get future
+        update messages.
       </div>
       <div className="fixed bottom-0 mx-auto right-0 left-0 max-w-2xl p-6">
         <Button
