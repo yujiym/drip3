@@ -1,11 +1,9 @@
 "use client";
-import Image from "next/image";
 import { useEffect } from "react";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
 import { redirect } from "next/navigation";
 import { Button } from "@nextui-org/react";
-import LogoImg from "@/assets/logo.png";
 
 export default function Home() {
   const { open } = useWeb3Modal();
@@ -25,9 +23,6 @@ export default function Home() {
           <br />
           Build <span className="font-dot">community</span>
         </h1>
-        {/* <div className="flex flex-1 items-center justify-center mt-60">
-          <Image src={LogoImg} height={128} alt="drip3" />
-        </div> */}
         <div className="overflow-hidden h-64 w-full fixed bottom-64 right-0 left-0">
           <svg
             viewBox="0 0 500 150"

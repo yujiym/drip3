@@ -6,10 +6,13 @@ export async function GET(request: Request) {
   const title = searchParams.get('title');
   const description = searchParams.get('description');
   const price = searchParams.get('price');
+  const image = searchParams.get('image');
   const owner = searchParams.get('owner');
+  const cid = searchParams.get('cid');
+  const tokenId = searchParams.get('tokenId');
 
   try {
-    await sql`INSERT INTO products (title, description, price, owner)  VALUES (${title}, ${description}, ${price}, ${owner});`;
+    await sql`INSERT INTO products (title, description, price, image, cid, tokenId, owner)  VALUES (${title}, ${description}, ${price}, ${image}, ${cid}, ${tokenId}, ${owner});`;
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }

@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS products (
   description VARCHAR(5000),
   image VARCHAR(255),
   cid VARCHAR(255),
+  tokenId VARCHAR(255),
   price float8,
   meta VARCHAR(255),
   owner VARCHAR(255),

@@ -12,6 +12,7 @@ import {
 import { Menu, LogOut, PackagePlus } from "lucide-react";
 import LogoImg from "@/assets/logo.png";
 import { useDisconnect } from "wagmi";
+import { Toaster } from "react-hot-toast";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const { address, isDisconnected } = useAccount();
@@ -64,6 +65,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </header>
       <div className="h-16" />
       {children}
+      <Toaster
+        toastOptions={{
+          style: {
+            background: "#111",
+            color: "#f7f7f7",
+          },
+        }}
+      />
     </main>
   );
 }

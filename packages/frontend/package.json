@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@lit-protocol/auth-helpers": "^2.2.54",
     "@lit-protocol/lit-node-client": "^2.2.54",
     "@nextui-org/react": "^2.1.13",
     "@types/node": "20.6.3",
@@ -16,9 +17,11 @@
     "@types/react-dom": "^18.2.7",
     "@vercel/blob": "^0.12.5",
     "@vercel/postgres": "^0.5.0",
+    "@wagmi/core": "^1.4.2",
     "@web3inbox/core": "^0.0.14",
     "@web3inbox/widget-react": "^0.6.18",
     "@web3modal/wagmi": "3.0.0-beta.4",
+    "add": "^2.0.6",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.279.0",
     "nanoid": "^5.0.1",
@@ -26,9 +29,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.46.2",
+    "react-hot-toast": "^2.4.1",
     "tailwindcss": "^3.3.3",
     "viem": "^1.12.1",
-    "wagmi": "^1.4.2"
+    "wagmi": "^1.4.2",
+    "web3.storage": "^4.5.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

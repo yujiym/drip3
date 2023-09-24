@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Button, Input, Textarea } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { useAccount } from "wagmi";
+import { readContract, writeContract } from "@wagmi/core";
+import NftAbi from "@/lib/abi/Drip3NFT.json";
+import toast from "react-hot-toast";
 
 export default function ProductForm() {
   const {
@@ -15,28 +18,42 @@ export default function ProductForm() {
 
   const onSubmit = async (data: any) => {
     try {
-      console.log(data);
+      console.log("--formData: ", data);
       // 1. upload image
       const res1 = await fetch(`/api/upload`, {
         method: "POST",
-        body: data.file[0],
+        body: image?.[0],
       });
-      console.log("--upload image: ", res1, res1.url);
-      //2. save file to IPFS
-      const res2 = await fetch(
-        `/api/add-product?title=${data.title}&description=${data.description}&price=${data.price}&owner=${address}`
-      );
-      console.log(res2);
-      //3. save file to IPFS
-      const res3 = await fetch(
-        `/api/add-product?title=${data.title}&description=${data.description}&price=${data.price}&owner=${address}`
-      );
-      console.log(res2);
-      //4. save metadata to db
+      console.log("--upload image: ", res1);
+      // 2. create NFT
+      const { hash } = await writeContract({
+        address: "0xC36dcDfF4968a80a91015A55fF07426E0e9F8658",
+        abi: NftAbi.abi,
+        functionName: "createToken",
+        chainId: 11155111,
+        args: ["drip3", BigInt(data.price) * BigInt(10 ** 18)],
+      });
+      // 3. create NFT
+      const readData = await readContract({
+        address: "0xC36dcDfF4968a80a91015A55fF07426E0e9F8658",
+        abi: NftAbi.abi,
+        chainId: 11155111,
+        functionName: "fetchItemsListed",
+      });
+      console.log("readData: ", readData);
+      const tokenId = readData.length - 1;
+      // 4. save file to IPFS
+      // const res3 = await fetch(`/api/lit/encrypt?tokenId=${tokenId}`, {
+      //   method: "POST",
+      //   body: data.file[0],
+      // });
+      const cid = "";
+      // 4. save metadata to db
       const res4 = await fetch(
-        `/api/add-product?title=${data.title}&description=${data.description}&price=${data.price}&owner=${address}`
+        `/api/add-product?title=${data.title}&description=${data.description}&price=${data.price}&image=${res1}&owner=${address}&cid=${cid}&tokenId=${tokenId}`
       );
-      console.log(res4);
+      console.log("--update db: ", res4);
+      toast("uploaded!");
     } catch (error) {
       console.log("---err:", error);
     }
@@ -70,6 +87,7 @@ export default function ProductForm() {
           size="lg"
           type="number"
           label="Price (ETH)"
+          step={0.01}
           placeholder="0.01"
           className="mt-5"
           isInvalid={!!errors.price}
@@ -82,6 +100,7 @@ export default function ProductForm() {
             type="file"
             accept="image/*"
             onChange={(e) => {
+              //@ts-ignore
               setImage(e.target.files[0]);
             }}
           />
