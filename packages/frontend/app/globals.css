@@ -2,15 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --c-bg2: #e6dfd7;
-}
-
 html,
 body {
   @apply h-full;
 }
 
 body {
-  @apply bg-background text-foreground;
+  @apply bg-background text-foreground font-sans;
+}
+
+input[type="file"]::file-selector-button {
+  @apply bg-foreground/30 mr-2 border-none rounded-lg px-4 py-1 text-white cursor-pointer my-2;
 }

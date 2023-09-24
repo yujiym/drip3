@@ -2,10 +2,10 @@
 import { NextUIProvider } from "@nextui-org/react";
 import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi/react";
 import { WagmiConfig } from "wagmi";
-import { arbitrum, mainnet, polygon } from "wagmi/chains";
+import { sepolia } from "wagmi/chains";
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID ?? "";
-const chains = [mainnet, arbitrum, polygon];
+const chains = [sepolia];
 const wagmiConfig = defaultWagmiConfig({
   chains,
   projectId,
